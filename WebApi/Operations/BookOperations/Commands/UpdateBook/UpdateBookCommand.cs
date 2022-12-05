@@ -6,12 +6,12 @@ namespace WebApi.Operations.BookOperations.Commands.UpdateBook
 {
     public class UpdateBookCommand
     {
-        private readonly KitapSepetiDbContext _context;
+        private readonly IKitapSepetiDbContext _context;
         private readonly IMapper _mapper;
         public int id;
         public UpdateBookModel Model { get; set; }
 
-        public UpdateBookCommand(KitapSepetiDbContext context, IMapper mapper)
+        public UpdateBookCommand(IKitapSepetiDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
@@ -31,7 +31,7 @@ namespace WebApi.Operations.BookOperations.Commands.UpdateBook
 
             // book = _mapper.Map<Book>(Model);
 
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
     }
 

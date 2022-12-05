@@ -6,10 +6,10 @@ namespace WebApi.Operations.BookOperations.Queries
 {
     public class GetBookByIdQuery
     {
-        private readonly KitapSepetiDbContext _context;
+        private readonly IKitapSepetiDbContext _context;
         public int id { get; set; }
         public IMapper _mapper{get; set;}
-        public GetBookByIdQuery(KitapSepetiDbContext context, IMapper mapper)
+        public GetBookByIdQuery(IKitapSepetiDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

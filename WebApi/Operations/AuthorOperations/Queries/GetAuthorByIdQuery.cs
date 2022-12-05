@@ -5,10 +5,10 @@ namespace WebApi.Operations.AuthorOperations.Queries
 {
     public class GetAuthorByIdQuery
     {
-        private readonly KitapSepetiDbContext _context;
+        private readonly IKitapSepetiDbContext _context;
         private readonly IMapper _mapper;
         public int id { get; set; }
-        public GetAuthorByIdQuery(KitapSepetiDbContext context, IMapper mapper)
+        public GetAuthorByIdQuery(IKitapSepetiDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

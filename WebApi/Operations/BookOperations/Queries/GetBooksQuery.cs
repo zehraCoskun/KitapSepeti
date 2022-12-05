@@ -7,9 +7,9 @@ namespace WebApi.Operations.BookOperations.Queries
 {
     public class GetBooksQuery
     {
-        private readonly KitapSepetiDbContext _context;
+        private readonly IKitapSepetiDbContext _context;
         private readonly IMapper _mapper;
-        public GetBooksQuery(KitapSepetiDbContext context, IMapper mapper)
+        public GetBooksQuery(IKitapSepetiDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

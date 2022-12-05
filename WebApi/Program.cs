@@ -10,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 //benim eklediğim kısım2
 builder.Services.AddDbContext<KitapSepetiDbContext>(option => option.UseInMemoryDatabase(databaseName : "KitapSepetiDb"));
+builder.Services.AddScoped<IKitapSepetiDbContext>(provider => provider.GetService<KitapSepetiDbContext>());
 
 //autoMapper eklediğim kısım1
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly()); 

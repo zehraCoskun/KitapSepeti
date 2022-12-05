@@ -12,7 +12,7 @@ namespace WebApi.DbOperations
                 if (context.Books.Any())
                 { return; }
 
-                context.AddRange
+                context.Books.AddRange
                 (
                     new Book
                     {
@@ -44,7 +44,7 @@ namespace WebApi.DbOperations
                 if (context.Genres.Any())
                 { return; }
 
-                context.AddRange
+                context.Genres.AddRange
                 (
                     new Genre
                     {
@@ -64,7 +64,7 @@ namespace WebApi.DbOperations
                 if(context.Authors.Any())
                 {return;}
 
-                context.AddRange
+                context.Authors.AddRange
                 (
                     new Author
                     {

@@ -5,10 +5,10 @@ namespace WebApi.Operations.AuthorOperations.Queries
 {
     public class GetAuthorsQuery
     {
-        private readonly KitapSepetiDbContext _context;
+        private readonly IKitapSepetiDbContext _context;
         private readonly IMapper _mapper;
 
-        public GetAuthorsQuery(KitapSepetiDbContext context, IMapper mapper)
+        public GetAuthorsQuery(IKitapSepetiDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

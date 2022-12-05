@@ -5,12 +5,12 @@ namespace WebApi.Operations.GenreOperations.Commands.UpdateGenre
 {
     public class UpdateGenreCommand
     {
-        private readonly KitapSepetiDbContext _context;
+        private readonly IKitapSepetiDbContext _context;
         private readonly IMapper _mapper;
         public int id { get; set; }
         public UpdateGenreModel Model { get; set; }
 
-        public UpdateGenreCommand(KitapSepetiDbContext context, IMapper mapper)
+        public UpdateGenreCommand(IKitapSepetiDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
