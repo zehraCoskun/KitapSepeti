@@ -6,7 +6,7 @@ namespace WebApi.Operations.AuthorOperations.Commands.DeleteAuthor
     {
         public DeleteAuthorCommandValidator()
         {
-            RuleFor(command => command.id).NotEmpty();
+            RuleFor(command => command.id).NotEmpty().GreaterThan(0);
         }
     }
 }
