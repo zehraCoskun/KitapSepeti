@@ -12,7 +12,7 @@ namespace WebApi.Operations.AuthorOperations.Commands.CreateAuthor
 
         public CreateAuthorCommand(IKitapSepetiDbContext context, IMapper mapper)
         {
-            _context = context;
+            _context = context; 
             _mapper = mapper;
         }
         public void Handle()

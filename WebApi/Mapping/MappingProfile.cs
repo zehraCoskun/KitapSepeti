@@ -9,6 +9,7 @@ using WebApi.Operations.BookOperations.Queries;
 using WebApi.Operations.GenreOperations.Commands.CreatGenre;
 using WebApi.Operations.GenreOperations.Commands.UpdateGenre;
 using WebApi.Operations.GenreOperations.Queries;
+using WebApi.Operations.UserOperations.Commands.CreateUserCommand;
 using static WebApi.Operations.BookOperations.Queries.GetBooksQuery;
 
 namespace WebApi.Mapping
@@ -34,6 +35,9 @@ namespace WebApi.Mapping
             CreateMap<Genre, GetGenreByIdModel>();
             CreateMap<Genre, GenresViewModel>();
             CreateMap<UpdateGenreModel, Genre>();
+
+            //UserController için mapping
+            CreateMap<CreateUserModel, User>();
         }
     }
 }

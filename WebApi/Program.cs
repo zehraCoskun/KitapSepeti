@@ -1,14 +1,33 @@
 using System.Reflection;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Middleware;
 using WebApi.DbOperations;
 using WebApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+//configuration ve token eklediğim kısım
+ConfigurationManager configuration = builder.Configuration;
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt => 
+{
+    opt.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateAudience = true,
+        ValidateIssuer = true,
+        ValidateLifetime =true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = configuration["Token:Issuer"],
+        ValidAudience = configuration["Token:Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Token:SecurityKey"])),
+        ClockSkew =TimeSpan.Zero
+    };
+
+});
 
 // Add services to the container.
-//benim eklediğim kısım2
+//DbContext eklediğim kısım
 builder.Services.AddDbContext<KitapSepetiDbContext>(option => option.UseInMemoryDatabase(databaseName : "KitapSepetiDb"));
 builder.Services.AddScoped<IKitapSepetiDbContext>(provider => provider.GetService<KitapSepetiDbContext>());
 
@@ -36,6 +55,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseAuthentication();
 
 app.UseHttpsRedirection();
 
